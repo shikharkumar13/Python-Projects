@@ -64,12 +64,12 @@ cd starter
 The tests need **pytest**. If you haven't installed it yet, a virtual environment is the tidy way (chapter 11):
 
 ```bash
-python3 -m venv .venv
+python3 -m venv .venv              # Windows: py -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
-python3 -m pip install pytest
+python -m pip install pytest
 ```
 
-On Windows, type `python` (or `py`) instead of `python3` everywhere in this guide.
+Once the virtual environment is active, plain `python` works on every computer, so the rest of this guide uses `python`. If you skip the virtual environment, type `python3` instead on Mac and Linux, and `py` on Windows.
 
 ## Using it
 
@@ -92,6 +92,8 @@ python -m streaks status
 ```
 
 (That only works once you've finished the steps below. Try it in `solution/` first, if you'd like to see the finished thing.)
+
+**The ▶ button in VS Code won't work for this project.** It runs one file on its own, as if you'd typed `python streaks/__main__.py`, and then the files can't find each other. Use the terminal.
 
 **Why `python -m streaks` and not `python streaks/cli.py`?** The files inside the package import each other, like `from streaks.habits import Habit`. For that to work, Python has to know that `streaks` is a package. `-m` tells Python "run this package", and it looks for it in the folder you're in. That's why you must be in `starter/`, the folder that *contains* `streaks/`. From anywhere else, you'll get `No module named streaks`.
 
@@ -219,6 +221,8 @@ date.fromisoformat("2026-10-19")        # date(2026, 10, 19)
 
 `from_dict` is a `@classmethod`: you call it on the class itself, as `Habit.from_dict(data)`, because there's no habit yet to call it on. Inside it, `cls` means `Habit`.
 
+It also checks that the name really is text. `habits.json` is just a file, and if someone edits it by hand and the name ends up as a number, everything would load fine, and then crash later, the first time something calls `.lower()` on it. Raising `TypeError` straight away means `load_habits()` (Step 9) can report the file as damaged instead.
+
 #### Step 7: `find_habit`
 
 This is what lets you type `done read` instead of `done "read 20 pages"`. The rules:
@@ -338,7 +342,9 @@ Days done ÷ days since you created the habit. Count the created day itself, or 
 
 #### Step 18: `weekday_counts`
 
-Another `Counter`: for every check-in, add 1 to that weekday's name. The `stats` command (already written) then asks `counts.most_common(1)` for your best day.
+Another `Counter`: for every check-in, add 1 to that weekday's name. The `stats` command (already written) then picks your best day.
+
+Look at how `stats` does that: `max(WEEKDAY_NAMES, key=lambda name: counts[name])`. Why not the simpler `counts.most_common(1)`? Because of ties. When two days have the same count, `most_common` picks whichever it came across first. The check-ins come out of a **set**, and a set of dates is in a different order every time you run Python. So with a tie, your "best day" could change from one run to the next. Going through the days in week order instead means a tie always goes to the earlier day.
 
 **Check it:** `python -m pytest`. Everything should pass.
 
@@ -383,8 +389,8 @@ Open `streaks.log` after using the program for a bit. It's a diary of everything
 The code has **type hints**, like `def current_streak(self, today: date) -> int:`. Python itself ignores them. They're notes for people, and for tools. If you'd like to check them (chapter 19), install mypy and run it:
 
 ```bash
-python3 -m pip install mypy
-python3 -m mypy streaks
+python -m pip install mypy
+python -m mypy streaks
 ```
 
 Try passing a string where a date should go, and see what mypy says.
@@ -397,9 +403,11 @@ Each of these should give a clear message, not a traceback:
 
 - [ ] `python -m streaks done` with no habit, and `python -m streaks done swim` for one that doesn't exist
 - [ ] Add `read` and `run`, then type `python -m streaks done r`. Which one did you mean?
+- [ ] Add a habit with a very short name, like `go`, and check the `status` table still lines up
 - [ ] `python -m streaks add READ` when you already have `read`
 - [ ] Mark the same habit done twice in one day
 - [ ] Open `habits.json`, type some rubbish into it, and run `status`. Check the file afterwards: it should be exactly as you left it
+- [ ] In `habits.json`, change a habit's name to a number, like `"name": 5`, with no quotes
 - [ ] Delete `habits.json`. You should simply start again with no habits
 - [ ] `cd ..` out of `starter/` and run `python -m streaks status`. Why doesn't it work? (See [Using it](#using-it).)
 - [ ] `python -m streaks dance`, then `echo $?`. It should be 2

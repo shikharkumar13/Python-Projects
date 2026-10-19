@@ -26,7 +26,15 @@ def test_no_file_yet_means_no_habits(tmp_path):
     assert load_habits(tmp_path / "habits.json") == {}
 
 
-@pytest.mark.parametrize("content", ["{not json", '{"habits": [{"name": "read"}]}', '{"habits": [{"name": "read", "created": "2026-13-45", "done": []}]}'])
+@pytest.mark.parametrize(
+    "content",
+    [
+        "{not json",                                                          # broken JSON
+        '{"habits": [{"name": "read"}]}',                                     # missing fields
+        '{"habits": [{"name": "read", "created": "2026-13-45", "done": []}]}',  # a date that can't exist
+        '{"habits": [{"name": 5, "created": "2026-10-01", "done": []}]}',       # a name that isn't text
+    ],
+)
 def test_a_damaged_file_is_reported_and_left_alone(tmp_path, content):
     path = tmp_path / "habits.json"
     path.write_text(content)

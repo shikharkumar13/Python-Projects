@@ -11,7 +11,7 @@ from collections.abc import Callable
 from datetime import date
 from pathlib import Path
 
-from streaks.habits import Habit, StreaksError, find_habit, weekday_counts
+from streaks.habits import WEEKDAY_NAMES, Habit, StreaksError, find_habit, weekday_counts
 from streaks.heatmap import heatmap
 from streaks.storage import DATA_FILE, load_habits, save_habits
 
@@ -98,7 +98,8 @@ def status(habits: dict[str, Habit], args: list[str], today: date) -> bool:
         print('No habits yet. Add one with: python -m streaks add "read 20 pages"')
         return False
 
-    width = max(len(name) for name in habits) + 2
+    # Wide enough for the longest name, and never narrower than the heading.
+    width = max([len("Habit")] + [len(name) for name in habits]) + 2
     print(f"Your habits on {today:%A} {today.day} {today:%B %Y}")
     print()
     print(f"{'Habit':<{width}}Today   Streak     Best")
@@ -129,8 +130,11 @@ def stats(habits: dict[str, Habit], args: list[str], today: date) -> bool:
         print("No check-ins yet. Come back after a few days of: python -m streaks done ...")
         return False
 
-    best_day, best_count = counts.most_common(1)[0]
-    print(f"Your best day: {best_day}, with {plural(best_count, 'check-in')}.")
+    # max() keeps the first of any tie, so a tie goes to the earlier day of
+    # the week. Without this, a tie could give a different answer each run,
+    # because a set of dates has no fixed order.
+    best_day = max(WEEKDAY_NAMES, key=lambda name: counts[name])
+    print(f"Your best day: {best_day}, with {plural(counts[best_day], 'check-in')}.")
     print()
     for habit in habits.values():
         rate = habit.completion_rate(today)
@@ -175,10 +179,24 @@ def main(argv: list[str], data_file: Path = DATA_FILE, today: date | None = None
     try:
         habits = load_habits(data_file)
         changed = COMMANDS[name](habits, args, today)
-        if changed:
-            save_habits(habits, data_file)
     except StreaksError as error:
         logger.warning("%s", error)
         print(error)
         return 1
+    except OSError as error:
+        # For example, habits.json is actually a folder, or isn't readable.
+        logger.error("Couldn't open %s: %s", data_file, error)
+        print(f"I couldn't open {data_file.name}. ({error})")
+        return 1
+
+    if changed:
+        try:
+            save_habits(habits, data_file)
+        except OSError as error:
+            # The folder is read-only, the disk is full, or another program
+            # won't let go of the file. The command has already printed
+            # its message, so say clearly that the change wasn't kept.
+            logger.error("Couldn't save %s: %s", data_file, error)
+            print(f"...but I couldn't save {data_file.name}, so that change wasn't kept. ({error})")
+            return 1
     return 0

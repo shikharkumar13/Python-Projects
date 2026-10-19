@@ -6,6 +6,7 @@ temporary file and pretend it's whatever day they like.
 
 from datetime import date, timedelta
 
+import streaks.cli
 from streaks.cli import COMMANDS, main
 from streaks.storage import load_habits
 
@@ -83,3 +84,39 @@ def test_stats(tmp_path, capsys):
     assert main(["stats"], data, TODAY + timedelta(days=1)) == 0
     out = capsys.readouterr().out
     assert "Monday" in out and "50%" in out
+
+
+def test_short_names_still_line_up(tmp_path, capsys):
+    data = tmp_path / "habits.json"
+    main(["add", "go"], data, TODAY)
+    capsys.readouterr()
+    main(["status"], data, TODAY)
+    header = capsys.readouterr().out.splitlines()[2]
+    assert header.startswith("Habit  Today")
+
+
+def test_a_tie_for_best_day_goes_to_the_earlier_weekday(tmp_path, capsys):
+    # One check-in on a Tuesday and one on a Monday: a tie, so Monday wins.
+    data = tmp_path / "habits.json"
+    main(["add", "read"], data, TODAY)
+    main(["done", "read"], data, TODAY + timedelta(days=1))   # Tuesday
+    main(["done", "read"], data, TODAY + timedelta(days=7))   # the next Monday
+    capsys.readouterr()
+    main(["stats"], data, TODAY + timedelta(days=7))
+    assert "Your best day: Monday" in capsys.readouterr().out
+
+
+def test_a_problem_saving_is_reported_not_crashed(tmp_path, capsys, monkeypatch):
+    # monkeypatch swaps save_habits for one that fails, just for this test.
+    def broken_save(habits, path):
+        raise PermissionError("the folder is read-only")
+    monkeypatch.setattr(streaks.cli, "save_habits", broken_save)
+    assert main(["add", "read"], tmp_path / "habits.json", TODAY) == 1
+    assert "couldn't save habits.json, so that change wasn't kept" in capsys.readouterr().out
+
+
+def test_a_problem_opening_the_file_is_reported_not_crashed(tmp_path, capsys):
+    folder = tmp_path / "habits.json"
+    folder.mkdir()                       # a folder where the file should be
+    assert main(["status"], folder, TODAY) == 1
+    assert "couldn't open habits.json" in capsys.readouterr().out

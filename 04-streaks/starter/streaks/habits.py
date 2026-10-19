@@ -99,6 +99,9 @@ class Habit:
         # TODO 6
         # - The opposite of to_dict(). date.fromisoformat("2026-10-19") turns the
         #   text back into a date.
+        # - If data["name"] isn't text (isinstance(name, str) is False), raise
+        #   TypeError. load_habits() turns that into a "damaged file" message, instead
+        #   of the program crashing later on.
         # - Build the habit with cls(name=..., created=..., done=...). `cls` here
         #   means Habit. "done" needs to be a set of dates again.
         raise StreaksError("Reading saved habits is TODO 6.")   # placeholder

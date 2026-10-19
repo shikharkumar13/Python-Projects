@@ -102,8 +102,14 @@ class Habit:
         A classmethod is called on the class itself, Habit.from_dict(...),
         because there's no Habit yet when you call it.
         """
+        name = data["name"]
+        # A name that isn't text (say, a number typed into the file by hand)
+        # would load without complaint and only crash later. Stop it here,
+        # and load_habits() will report the file as damaged.
+        if not isinstance(name, str):
+            raise TypeError(f"the habit name {name!r} isn't text")
         return cls(
-            name=data["name"],
+            name=name,
             created=date.fromisoformat(data["created"]),
             done={date.fromisoformat(text) for text in data["done"]},
         )
@@ -117,7 +123,7 @@ def find_habit(habits: dict[str, Habit], text: str) -> Habit:
     """
     text = text.strip().lower()
     if text == "":
-        raise StreaksError("Which habit? Try something like: python -m streaks done read")
+        raise StreaksError("Which habit? Type the start of its name too, like: read")
 
     for name, habit in habits.items():
         if name.lower() == text:
