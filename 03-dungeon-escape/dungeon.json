@@ -1,0 +1,74 @@
+{
+  "title": "Dungeon Escape",
+  "intro": "You wake up on cold stone with a torch in your hand and 3 health points. Somewhere in this dungeon is a key, and beyond it, the way out.",
+  "win_text": "You squeeze through the gate and run into the sunlight. You escaped!",
+  "start": "cell",
+  "escape": "outside",
+  "player": {
+    "health": 3,
+    "items": ["torch"]
+  },
+  "items": {
+    "torch": {
+      "description": "A flickering torch. It keeps the dark away."
+    },
+    "sword": {
+      "description": "A rusty old sword, still sharp enough. Adds 2 damage in a fight.",
+      "damage": 2
+    },
+    "potion": {
+      "description": "A small red bottle. Drinking it gives you back 2 health.",
+      "heal": 2
+    },
+    "key": {
+      "description": "A heavy iron key with a dragon on the handle."
+    }
+  },
+  "rooms": {
+    "cell": {
+      "name": "Prison cell",
+      "description": "Damp straw covers the floor. The cell door hangs open on one rusty hinge.",
+      "exits": {"north": "corridor"}
+    },
+    "corridor": {
+      "name": "Long corridor",
+      "description": "Water drips down the stone walls. Doorways open off in every direction.",
+      "exits": {"south": "cell", "east": "armory", "west": "storeroom", "north": "guardroom"}
+    },
+    "armory": {
+      "name": "Old armory",
+      "description": "Racks of broken spears and dented shields line the walls.",
+      "exits": {"west": "corridor"},
+      "items": ["sword"]
+    },
+    "storeroom": {
+      "name": "Storeroom",
+      "description": "Sacks of rotten grain are piled up next to some broken barrels.",
+      "exits": {"east": "corridor"},
+      "items": ["potion"]
+    },
+    "guardroom": {
+      "name": "Guard room",
+      "description": "A wooden table is covered in playing cards and chicken bones.",
+      "exits": {"south": "corridor", "north": "hall"},
+      "items": ["key", "potion"],
+      "enemy": "goblin"
+    },
+    "hall": {
+      "name": "Dragon's hall",
+      "description": "The ceiling is lost in smoke. Gold coins crunch under your feet.",
+      "exits": {"south": "guardroom", "north": "gate"},
+      "enemy": "dragon"
+    },
+    "gate": {
+      "name": "The great gate",
+      "description": "A huge iron gate blocks the tunnel. Daylight shines through the bars.",
+      "exits": {"south": "hall", "north": "outside"},
+      "locked": {"north": "key"}
+    },
+    "outside": {
+      "name": "Outside",
+      "description": "Fresh air! Green hills stretch away in the sunshine."
+    }
+  }
+}
