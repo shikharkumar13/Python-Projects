@@ -1,0 +1,128 @@
+[
+  {
+    "category": "Geography",
+    "difficulty": "easy",
+    "question": "What is the capital of Japan?",
+    "answer": "Tokyo",
+    "wrong": ["Kyoto", "Osaka", "Seoul"]
+  },
+  {
+    "category": "Science",
+    "difficulty": "easy",
+    "question": "How many legs does a spider have?",
+    "answer": "8",
+    "wrong": ["6", "10", "12"]
+  },
+  {
+    "category": "Science",
+    "difficulty": "easy",
+    "question": "Which planet is known as the Red Planet?",
+    "answer": "Mars",
+    "wrong": ["Venus", "Jupiter", "Mercury"]
+  },
+  {
+    "category": "Sport",
+    "difficulty": "easy",
+    "question": "How many players are there in a cricket team?",
+    "answer": "11",
+    "wrong": ["9", "10", "12"]
+  },
+  {
+    "category": "Food",
+    "difficulty": "easy",
+    "question": "Which fruit is dried to make raisins?",
+    "answer": "Grapes",
+    "wrong": ["Plums", "Figs", "Dates"]
+  },
+  {
+    "category": "Computers",
+    "difficulty": "easy",
+    "question": "What does 'www' stand for in a website address?",
+    "answer": "World Wide Web",
+    "wrong": ["World Web Wide", "Wide World Web", "Web World Wide"]
+  },
+  {
+    "category": "History",
+    "difficulty": "medium",
+    "question": "In which year did India become independent?",
+    "answer": "1947",
+    "wrong": ["1942", "1950", "1952"]
+  },
+  {
+    "category": "Science",
+    "difficulty": "medium",
+    "question": "Which gas do plants take in from the air to make their food?",
+    "answer": "Carbon dioxide",
+    "wrong": ["Oxygen", "Nitrogen", "Hydrogen"]
+  },
+  {
+    "category": "Geography",
+    "difficulty": "medium",
+    "question": "Which is the largest ocean on Earth?",
+    "answer": "Pacific Ocean",
+    "wrong": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean"]
+  },
+  {
+    "category": "Computers",
+    "difficulty": "medium",
+    "question": "Who created the Python programming language?",
+    "answer": "Guido van Rossum",
+    "wrong": ["Dennis Ritchie", "James Gosling", "Bjarne Stroustrup"]
+  },
+  {
+    "category": "Sport",
+    "difficulty": "medium",
+    "question": "How many rings are on the Olympic flag?",
+    "answer": "5",
+    "wrong": ["4", "6", "7"]
+  },
+  {
+    "category": "Science",
+    "difficulty": "medium",
+    "question": "What is the chemical symbol for gold?",
+    "answer": "Au",
+    "wrong": ["Ag", "Gd", "Go"]
+  },
+  {
+    "category": "Geography",
+    "difficulty": "hard",
+    "question": "What is the capital of Australia?",
+    "answer": "Canberra",
+    "wrong": ["Sydney", "Melbourne", "Perth"]
+  },
+  {
+    "category": "History",
+    "difficulty": "hard",
+    "question": "In which year did the Berlin Wall fall?",
+    "answer": "1989",
+    "wrong": ["1985", "1987", "1991"]
+  },
+  {
+    "category": "Geography",
+    "difficulty": "hard",
+    "question": "What is the smallest country in the world by area?",
+    "answer": "Vatican City",
+    "wrong": ["Monaco", "San Marino", "Liechtenstein"]
+  },
+  {
+    "category": "Science",
+    "difficulty": "hard",
+    "question": "How many bones are there in an adult human body?",
+    "answer": "206",
+    "wrong": ["186", "212", "230"]
+  },
+  {
+    "category": "Computers",
+    "difficulty": "hard",
+    "question": "What is the Python language named after?",
+    "answer": "A British comedy group",
+    "wrong": ["A type of snake", "A Greek myth", "A video game"]
+  },
+  {
+    "category": "Science",
+    "difficulty": "hard",
+    "question": "What is the hardest natural substance on Earth?",
+    "answer": "Diamond",
+    "wrong": ["Quartz", "Granite", "Iron"]
+  }
+]

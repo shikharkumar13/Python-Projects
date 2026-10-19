@@ -1,0 +1,9 @@
+payer,amount,description,shared_by
+Riya,18000,Villa for 3 nights,Riya;Arjun;Meera;Kabir;Zoya
+Arjun,-2500,Scooter rental,Riya;Arjun;Meera;Kabir;Zoya
+Meera,three hundred,Dinner at the beach shack,Meera;Kabir;Zoya
+Kabir,1800,Drinks on the beach,
+Zoya,640,Breakfast,Riya;Zoyaa
+Rohan,1000,Petrol,Riya;Arjun
+Arjun,1200,Fort entry tickets,Riya;Arjun:two;Meera
+Meera,100,Coconut water,Riya;Arjun;Riya
