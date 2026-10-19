@@ -213,7 +213,7 @@ raise GameOver("Everything goes dark as you fall to the floor...")
 
 Here's the clever part. You don't catch `GameOver` anywhere near here. It's raised deep inside a fight, inside `enter_room()`, inside `go()`, inside `handle()`, inside `play()`. It travels up through every one of those calls until it reaches the `try` in `main()`, which prints the message and ends the game cleanly. Without that exception, every one of those functions would need to check "is the player dead?" and pass the answer back up.
 
-This is also **encapsulation**: the rules about health (never below 0, never above the maximum, game over at 0) live inside `Player`, next to the health itself. The rest of the game just calls `take_damage()` and `heal()`, and never changes `player.health` directly.
+This is also **encapsulation**: the rules about health (never below 0, never above the maximum, game over at 0) live inside `Player`, next to the health itself. During play, the rest of the game just calls `take_damage()` and `heal()`, and never changes `player.health` directly. (Loading a save is the one exception. It puts back a saved number, after checking that the number makes sense.)
 
 ### Part 4: Enemies
 
@@ -287,10 +287,18 @@ The safe way to load is to **build first, swap last**:
 
 Why bother? Imagine someone has edited the save file, and it mentions an item called `"laser"` that doesn't exist. Halfway through loading, you'd get a `KeyError`. If you'd been changing the real game as you went, it would now be half old and half new: a broken mess. With build-first-swap-last, the error happens to the new world, which you simply throw away. The game you were playing isn't touched.
 
+There's a second thing to watch for. A save file is just text, and anyone can edit it. If someone changes `"health": 2` to `"health": "abc"`, a load with no checks would work fine: `"abc"` is copied in like any other value. The crash only comes later, the first time the status bar tries to draw `"♥" * "abc"`. By then, the load is long over, and the error is very confusing.
+
+So **check each value as you load it**:
+
+- `int(data["health"])` turns the health into a number, or raises `ValueError` for something like `"abc"`. Then check it's between 1 and the maximum.
+- Check that the room ids are real rooms.
+- `dict(saved["locked"])` makes a fresh copy, and fails if the value isn't shaped like a dictionary.
+
 You can catch several kinds of error with one `except`:
 
 ```python
-except (KeyError, TypeError, AttributeError):
+except (KeyError, TypeError, ValueError, AttributeError):
 ```
 
 **Check it:** save, pick something up, then load. The item should be back in the room.
@@ -324,6 +332,8 @@ This way of searching is called **depth-first search**. It follows one path as d
 
 **Check it:** in `dungeon.json`, change the gate's `"north": "outside"` to `"north": "hall"`, and start the game. It should refuse with "there's no way to get from 'cell' to 'outside'". Then change it back.
 
+**What it can't catch.** `can_reach()` treats locked exits as if they were open. So if you hid the key *behind* the gate it opens, the check would still pass, and nobody could ever win. Catching that needs a cleverer search, one that keeps track of the keys you've picked up along the way.
+
 #### Step 17: Spooky events (`random_events`)
 
 A **generator** is a function that uses `yield` instead of `return`. Each time you call `next()` on it, it runs until it reaches a `yield`, hands over that value, and then *pauses* right there. The next `next()` carries on from where it paused.
@@ -333,7 +343,7 @@ events = random_events(4)
 next(events)    # None
 next(events)    # None
 next(events)    # None
-next(events)    # "You hear footsteps somewhere above you..."
+next(events)    # one of the spooky messages, picked at random
 ```
 
 That's why `while True:` is fine here, even though it never ends. The generator only does one step each time the game asks for one. The game loop in `play()` (already written) asks once per command.
@@ -383,7 +393,9 @@ Each of these should give a sensible message, not a crash:
 - [ ] Type `load` before you've ever saved
 - [ ] Open `savegame.json`, type some rubbish into it, and load
 - [ ] In `savegame.json`, change `"sword"` to `"laser"`, and load. The game you're playing shouldn't change at all
+- [ ] In `savegame.json`, change the health to `"abc"`, then to `99`, and load each time. Both should be refused
 - [ ] In `dungeon.json`, point an exit at a room that doesn't exist, like `"east": "nowhere"`
+- [ ] In `dungeon.json`, change one exit to `"North"`, with a capital N
 - [ ] Walk to the dragon without the sword. You'll probably lose, and the game should end cleanly
 - [ ] Play twice with the same commands and the same `SEED`. Both games should go exactly the same way
 
@@ -406,7 +418,9 @@ Everything about the dungeon lives in `dungeon.json`, so you can make a new one 
 
 Only `name` and `description` are required. `"locked": {"north": "key"}` means the north exit needs the key. Items are listed once, at the top of the file, under `"items"`. Give an item `"heal"` to make it a potion, or `"damage"` to make it a weapon.
 
-If you make a mistake, such as an exit to a room that doesn't exist, an item that isn't defined, or no way to reach the escape, the game tells you what's wrong before it starts.
+Write directions and item names in **lowercase**. The game lowercases everything the player types, so an exit called `"North"` could never be used.
+
+If you make a mistake, the game tells you what's wrong before it starts. That includes an exit to a room that doesn't exist, an item that isn't defined, a missing `"title"`, `"intro"` or `"win_text"`, a name with capital letters, or no way at all to reach the escape. The one thing it can't spot is a key locked away behind its own door (see Step 16).
 
 ---
 
@@ -420,7 +434,7 @@ Typing `go north` gets tiring. Let the player type `n`, `s`, `e` and `w` to move
 
 - `"i": self.show_inventory` is one extra line in the command table.
 - The directions are trickier, because `n` should run `self.go("north")` and ignore whatever noun it was given. A tiny `lambda` does it: `"n": lambda noun: self.go("north")`. That's chapter 7's lambda, doing a real job.
-- Update `show_help()` so players know about the shortcuts.
+- `show_help()` lists every word in the table, so your shortcuts will appear there automatically. Run `help` and check it still reads well.
 
 ### 2. A dark room, and a reason to keep your torch
 

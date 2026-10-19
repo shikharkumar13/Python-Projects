@@ -284,9 +284,15 @@ def can_reach(rooms, current, goal, visited=None):
 
 
 def check_map(rooms, start, escape):
-    """Make sure the dungeon can actually be played, before it starts."""
+    """Make sure the dungeon can actually be played, before it starts.
+
+    One thing it can't catch: can_reach() treats locked exits as open, so a
+    key hidden behind its own locked door would still pass.
+    """
     for room_id in rooms:
         for direction, target in rooms[room_id].exits.items():
+            if direction != direction.lower():
+                raise MapError(f"the exit '{direction}' in '{room_id}' should be written in lowercase.")
             if target not in rooms:
                 raise MapError(f"'{room_id}' has an exit {direction} to '{target}', but there's no room called that.")
     if start not in rooms:
@@ -337,12 +343,15 @@ class Game:
         # If the map leaves something out, Python raises KeyError. We turn
         # that into a MapError with a clearer message.
         try:
+            self.title = self.map_data["title"]
+            self.intro = self.map_data["intro"]
+            self.win_text = self.map_data["win_text"]
             self.item_catalog = self.build_items()
             self.rooms, self.player = self.build_world()
             self.escape = self.map_data["escape"]
             check_map(self.rooms, self.map_data["start"], self.escape)
         except KeyError as error:
-            raise MapError(f"it mentions {error}, but that isn't defined anywhere.")
+            raise MapError(f"{error} is missing, or is spelled differently in one place.")
 
         self.commands = self.build_commands()
         self.events = random_events(EVENT_EVERY)
@@ -352,6 +361,10 @@ class Game:
         """Make one Item object for each item in the map."""
         catalog = {}
         for name, info in self.map_data["items"].items():
+            # Everything the player types is made lowercase, so "Sword" in
+            # the map could never be picked up.
+            if name != name.lower():
+                raise MapError(f"the item '{name}' should be written in lowercase.")
             catalog[name] = Item(name, info["description"], info.get("heal", 0), info.get("damage", 0))
         return catalog
 
@@ -362,6 +375,8 @@ class Game:
         """
         rooms = {}
         for room_id, info in self.map_data["rooms"].items():
+            # Every potion in the game is the very same Item object from the
+            # catalog. That's fine, because items never change once made.
             items = [self.item_catalog[name] for name in info.get("items", [])]
             enemy = None
             if info.get("enemy") is not None:
@@ -397,8 +412,8 @@ class Game:
     # ----- the main loop ---------------------------------------------------
 
     def play(self):
-        print(self.map_data["title"])
-        print(self.map_data["intro"])
+        print(self.title)
+        print(self.intro)
         print("Type help to see what you can do.")
         print()
         self.look("")
@@ -450,7 +465,7 @@ class Game:
 
         if room_id == self.escape:
             print()
-            print(self.map_data["win_text"])
+            print(self.win_text)
             self.running = False
         elif room.enemy is not None:
             self.fight(room)
@@ -618,23 +633,34 @@ class Game:
         # halfway, the game you're playing now isn't touched.
         rooms, player = self.build_world()
         try:
+            # A save file is just text, and anyone can edit it. So check each
+            # value now. Otherwise a bad one would only crash the game later.
             if data["room"] not in rooms:
                 raise KeyError(data["room"])
+            if data["previous_room"] is not None and data["previous_room"] not in rooms:
+                raise KeyError(data["previous_room"])
+            health = int(data["health"])        # int("abc") raises ValueError
+            if health < 1 or health > player.max_health:
+                raise ValueError(f"health {health} is out of range")
+
             player.room_id = data["room"]
             player.previous_room = data["previous_room"]
-            player.health = data["health"]
+            player.health = health
             player.inventory = [self.item_catalog[name] for name in data["inventory"]]
 
             for room_id, saved in data["rooms"].items():
                 room = rooms[room_id]
                 room.items = [self.item_catalog[name] for name in saved["items"]]
-                room.locked = saved["locked"]
+                # dict() makes a fresh copy, and fails on anything that
+                # isn't shaped like a dictionary.
+                room.locked = dict(saved["locked"])
                 if saved["enemy_health"] is None:
                     room.enemy = None
                 else:
-                    room.enemy.health = saved["enemy_health"]
-        except (KeyError, TypeError, AttributeError):
+                    room.enemy.health = int(saved["enemy_health"])
+        except (KeyError, TypeError, ValueError, AttributeError):
             # KeyError: a room or item the map doesn't have.
+            # ValueError: a value like "abc" where a number should be.
             # TypeError or AttributeError: the file has the wrong shape,
             # like an enemy's health saved for a room with no enemy.
             print("That save file doesn't match this dungeon, so I can't load it.")
