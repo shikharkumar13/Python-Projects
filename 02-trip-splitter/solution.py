@@ -40,7 +40,10 @@ class InvalidExpense(Exception):
 def load_friends():
     """Read friends.txt and return the names as a set."""
     friends = set()
-    with open(FRIENDS_FILE, encoding="utf-8") as file:
+    # "utf-8-sig" copes with an invisible mark that some editors (like old
+    # versions of Windows Notepad) put at the very start of a file. Without
+    # it, the first name would come out as "\ufeffRiya" instead of "Riya".
+    with open(FRIENDS_FILE, encoding="utf-8-sig") as file:
         for line in file:
             name = line.strip()
             if name != "":          # skip blank lines
@@ -60,15 +63,22 @@ def parse_amount(text, line_number):
     """Turn text like "1,240.50" into a whole number of paise (124050)."""
     # People write money in all sorts of ways, so tidy it up first.
     text = text.replace("₹", "").replace(",", "")
+    if text == "":
+        raise InvalidExpense(f"Line {line_number}: the amount is missing.")
 
-    try:
-        rupees = float(text)
-    except ValueError:
-        raise InvalidExpense(f"Line {line_number}: the amount '{text}' isn't a number.")
+    # Money has at most 2 numbers after the point. 10.005 is almost
+    # certainly a typo, so we say so instead of quietly rounding it.
+    if "." in text and len(text.split(".")[1]) > 2:
+        raise InvalidExpense(f"Line {line_number}: the amount '{text}' has more than 2 numbers after the point.")
 
     # round(), not int()! 19.99 * 100 is 1998.9999999999998 inside the
     # computer, and int() would chop that down to 1998.
-    paise = round(rupees * 100)
+    # round() sits inside the try too, because float() accepts the words
+    # "nan" and "inf", and round() can't turn those into whole numbers.
+    try:
+        paise = round(float(text) * 100)
+    except (ValueError, OverflowError):
+        raise InvalidExpense(f"Line {line_number}: the amount '{text}' isn't a number.")
 
     if paise <= 0:
         raise InvalidExpense(f"Line {line_number}: the amount must be more than zero, not {text}.")
@@ -146,8 +156,11 @@ def load_expenses(path, friends):
     # start of CSV files. newline="" is what the csv module asks for.
     with open(path, encoding="utf-8-sig", newline="") as file:
         reader = csv.DictReader(file)
+        if reader.fieldnames is None:
+            raise InvalidExpense(f"{path.name} is completely empty.")
         if reader.fieldnames != COLUMNS:
-            raise InvalidExpense(f"Line 1: the columns should be {','.join(COLUMNS)}")
+            found = ",".join(reader.fieldnames)
+            raise InvalidExpense(f"Line 1: the columns should be {','.join(COLUMNS)} but they are {found}")
 
         for row in reader:
             # reader.line_num is the line we're on in the file. It stays
@@ -261,7 +274,7 @@ def show_summary(expenses, paid, share, balances):
     print()
     print(f"Trip total: {format_rupees(trip_total)} across {len(expenses)} expenses")
     print()
-    print(f"{'Name':<8}{'Paid':>12}{'Share':>12}   Balance")
+    print(f"{'Name':<12}{'Paid':>12}{'Share':>12}   Balance")
     for name in balances:
         if balances[name] > 0:
             status = f"gets back {format_rupees(balances[name])}"
@@ -269,7 +282,7 @@ def show_summary(expenses, paid, share, balances):
             status = f"owes {format_rupees(-balances[name])}"
         else:
             status = "all square"
-        print(f"{name:<8}{format_rupees(paid[name]):>12}{format_rupees(share[name]):>12}   {status}")
+        print(f"{name:<12}{format_rupees(paid[name]):>12}{format_rupees(share[name]):>12}   {status}")
 
 
 def show_payments(payments):
@@ -328,6 +341,11 @@ def main():
     except FileNotFoundError:
         print(f"I can't find {path.name}. Make sure it's in the same folder as this file.")
         return
+    except UnicodeDecodeError:
+        # Excel's plain "CSV" option saves accented letters (like the é in
+        # Café) in an older format that isn't UTF-8.
+        print(f"{path.name} isn't saved as UTF-8 text. In Excel, use Save As and pick 'CSV UTF-8'.")
+        return
     except InvalidExpense as error:
         print(error)
         return
@@ -352,7 +370,13 @@ def main():
     show_summary(expenses, paid, share, balances)
     payments = settle_up(balances)
     show_payments(payments)
-    save_plan(payments)
+    try:
+        save_plan(payments)
+    except PermissionError:
+        # On Windows, a file that's open in Excel can't be written to.
+        print()
+        print(f"I couldn't save {SETTLEMENT_FILE.name}. Is it open in another program, like Excel? Close it and run me again.")
+        return
     print()
     print(f"Saved the plan to {SETTLEMENT_FILE.name}.")
 

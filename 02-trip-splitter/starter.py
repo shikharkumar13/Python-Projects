@@ -48,7 +48,8 @@ def load_friends():
     """Read friends.txt and return the names as a set."""
     # TODO 1
     # - Start with an empty set:  friends = set()   ({} would be a dictionary!)
-    # - Open FRIENDS_FILE and loop over it line by line.
+    # - Open FRIENDS_FILE with encoding="utf-8-sig" (the README explains
+    #   why) and loop over it line by line.
     # - .strip() each line. If it isn't empty, .add() it to the set.
     # - Return the set.
     return set()   # placeholder: replace this line
@@ -66,10 +67,14 @@ def parse_amount(text, line_number):
     """Turn text like "1,240.50" into a whole number of paise (124050)."""
     # TODO 2
     # - Remove any "₹" and "," from the text with .replace().
-    # - Turn it into a float inside try/except ValueError. If it fails,
-    #   raise InvalidExpense(f"Line {line_number}: ...") with a clear message.
-    # - Work out the paise with round(rupees * 100). Use round(), NOT int().
-    #   The README explains why.
+    # - If the text is now empty, raise InvalidExpense: the amount is missing.
+    # - If it has a "." with more than 2 numbers after it, raise InvalidExpense.
+    #   Hint: text.split(".")[1] is the part after the point.
+    # - Inside ONE try, do both steps:  paise = round(float(text) * 100)
+    #   Use round(), NOT int(). The README explains why.
+    #   Catch both ValueError and OverflowError:
+    #     except (ValueError, OverflowError):
+    #   and raise InvalidExpense(f"Line {line_number}: ...") with a clear message.
     # - If the paise are 0 or less, raise InvalidExpense too.
     # - Return the paise.
     return 0   # placeholder: replace this line
@@ -126,8 +131,10 @@ def load_expenses(path, friends):
     # - Make two empty lists: `expenses` and `errors`.
     # - Open the file like this (the README explains both extra arguments):
     #     with open(path, encoding="utf-8-sig", newline="") as file:
-    # - Make a csv.DictReader(file). If reader.fieldnames isn't the same as
-    #   COLUMNS, raise InvalidExpense("Line 1: ...").
+    # - Make a csv.DictReader(file). reader.fieldnames holds the column names
+    #   from the first line, or None if the file is completely empty.
+    #   Raise InvalidExpense if it's None, or isn't the same as COLUMNS.
+    #   (Showing the columns you actually found makes the message more useful.)
     # - Loop over the reader. For each row, call parse_row() inside a try.
     #   Use reader.line_num as the line number.
     #     - It worked: append the result to `expenses`.
@@ -229,7 +236,7 @@ def show_summary(expenses, paid, share, balances):
     print()
     print(f"Trip total: {format_rupees(trip_total)} across {len(expenses)} expenses")
     print()
-    print(f"{'Name':<8}{'Paid':>12}{'Share':>12}   Balance")
+    print(f"{'Name':<12}{'Paid':>12}{'Share':>12}   Balance")
     for name in balances:
         if balances[name] > 0:
             status = f"gets back {format_rupees(balances[name])}"
@@ -237,7 +244,7 @@ def show_summary(expenses, paid, share, balances):
             status = f"owes {format_rupees(-balances[name])}"
         else:
             status = "all square"
-        print(f"{name:<8}{format_rupees(paid[name]):>12}{format_rupees(share[name]):>12}   {status}")
+        print(f"{name:<12}{format_rupees(paid[name]):>12}{format_rupees(share[name]):>12}   {status}")
 
 
 def show_payments(payments):
@@ -293,6 +300,11 @@ def main():
     except FileNotFoundError:
         print(f"I can't find {path.name}. Make sure it's in the same folder as this file.")
         return
+    except UnicodeDecodeError:
+        # Excel's plain "CSV" option saves accented letters (like the é in
+        # Café) in an older format that isn't UTF-8.
+        print(f"{path.name} isn't saved as UTF-8 text. In Excel, use Save As and pick 'CSV UTF-8'.")
+        return
     except InvalidExpense as error:
         print(error)
         return
@@ -317,7 +329,13 @@ def main():
     show_summary(expenses, paid, share, balances)
     payments = settle_up(balances)
     show_payments(payments)
-    save_plan(payments)
+    try:
+        save_plan(payments)
+    except PermissionError:
+        # On Windows, a file that's open in Excel can't be written to.
+        print()
+        print(f"I couldn't save {SETTLEMENT_FILE.name}. Is it open in another program, like Excel? Close it and run me again.")
+        return
     print()
     print(f"Saved the plan to {SETTLEMENT_FILE.name}.")
 

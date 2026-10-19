@@ -11,12 +11,12 @@ This is what it prints for the sample trip:
 ```
 Trip total: ₹42,940.75 across 10 expenses
 
-Name            Paid       Share   Balance
-Arjun         ₹8,700   ₹9,506.67   owes ₹806.67
-Kabir        ₹10,000   ₹8,206.91   gets back ₹1,793.09
-Meera      ₹3,250.75   ₹8,240.25   owes ₹4,989.50
-Riya         ₹19,000   ₹8,010.01   gets back ₹10,989.99
-Zoya          ₹1,990   ₹8,976.91   owes ₹6,986.91
+Name                Paid       Share   Balance
+Arjun             ₹8,700   ₹9,506.67   owes ₹806.67
+Kabir            ₹10,000   ₹8,206.91   gets back ₹1,793.09
+Meera          ₹3,250.75   ₹8,240.25   owes ₹4,989.50
+Riya             ₹19,000   ₹8,010.01   gets back ₹10,989.99
+Zoya              ₹1,990   ₹8,976.91   owes ₹6,986.91
 
 To settle up, make these 4 payments:
   Zoya pays Riya ₹6,986.91
@@ -98,14 +98,17 @@ Real spreadsheets have typos. The program checks every line, and for every probl
 
 These are the mistakes it catches:
 
-- an amount that isn't a number, or is zero or negative
+- an amount that's missing, isn't a number, is zero or negative, or has more than 2 numbers after the point (like `10.005`)
 - a payer who is missing, or isn't in `friends.txt`
 - an empty `shared_by`
 - a name in `shared_by` that isn't in `friends.txt`
 - shares written wrongly, like `Arjun:two` or `Arjun:0`
 - the same person listed twice
 - a line with too many commas, usually from a comma that should have been inside quotes
-- a file with the wrong column names
+- a file with the wrong column names, or nothing in it at all
+- a file that Excel saved in an old format instead of UTF-8 (see the tip below)
+
+> **Tip for Excel users:** when you save a CSV from Excel, choose **CSV UTF-8**. The plain "CSV" option uses an older format, and this program can't read letters like the é in Café from it.
 
 ### Your must-have checklist
 
@@ -124,7 +127,13 @@ These are the mistakes it catches:
 
 Open `starter.py`. A few parts are already written for you: the settings, the `InvalidExpense` exception, `clean()`, the two `show_` functions, `choose_file()` and `main()`. Your job is the 12 TODOs.
 
-**You can run the file at any time.** Each unfinished function returns a *placeholder*, an empty value like `set()` or `{}`, so nothing crashes. At first it says `No names found in friends.txt.`, because reading that file is TODO 1. As you finish each step, the program gets further.
+**You can run the file at any time.** Each unfinished function returns a *placeholder*, an empty value like `set()` or `{}`, so nothing crashes. As you finish each step, the program gets further. Until then, some of its messages won't be true, because they're based on placeholders:
+
+- Before TODO 1, it says `No names found in friends.txt.`
+- After TODO 1, it says `There are no expenses in expenses.csv yet.` until you finish TODO 5.
+- After TODO 5, the report ends with `Everyone is already even.` until you finish TODO 10.
+
+Nothing's wrong with the files. Those messages go away as you fill in the steps.
 
 **To test one function on its own**, go to the last line, put a `#` in front of `main()`, and add a print:
 
@@ -154,24 +163,38 @@ Why not just use `ValueError`? Because our own name makes the code say what it m
 
 ### Step 1: Reading the friends (`load_friends`)
 
+Open the file with `encoding="utf-8-sig"`. Some editors, like older versions of Windows Notepad, put an invisible mark at the very start of a file. With plain `"utf-8"` that mark sticks to the first name, so you'd get `"\ufeffRiya"`, and then every line with Riya would fail with "Riya isn't in friends.txt". `"utf-8-sig"` quietly removes the mark.
+
 Loop over the file line by line, `.strip()` each line, and `.add()` the non-empty ones to a set.
 
 Careful: an empty set is `set()`. Writing `{}` gives you an empty **dictionary**.
 
-We use a set because the only question we ever ask is "is this person on the trip?", and a set answers that instantly. As a bonus, if a name appears twice in the file, the set keeps just one.
+We use a set because the only question we ever ask is "is this person on the trip?", and a set answers that instantly. And if a name appears twice in the file, the set just keeps one.
 
 **Check it:** `print(load_friends())` shows the five names. The order may change from run to run, because sets don't keep things in order.
 
 ### Step 2: Reading an amount (`parse_amount`)
 
-First tidy the text: `text.replace("₹", "").replace(",", "")` turns `"₹1,350"` into `"1350"`. Then turn it into a number with `float()`, inside a `try`, and raise `InvalidExpense` if that fails.
+First tidy the text: `text.replace("₹", "").replace(",", "")` turns `"₹1,350"` into `"1350"`. Then do two quick checks, each raising `InvalidExpense`:
 
-Then turn rupees into paise with `round(rupees * 100)`. **Not** `int()`. [The big idea](#the-big-idea-never-store-money-as-a-float) below explains why.
+- Is the text empty? Then the amount is missing.
+- Are there more than 2 numbers after the point? `text.split(".")[1]` is the part after it. `10.005` is almost certainly a typo, and with money it's better to ask than to guess.
+
+Now turn it into paise with `round(float(text) * 100)`. **Use `round()`, not `int()`.** [The big idea](#the-big-idea-never-store-money-as-a-float) below explains why.
+
+Put that whole line inside **one** `try`. Here's why both steps need to be in there: `float()` happily accepts the words `"nan"` ("not a number") and `"inf"` (infinity). It's `round()` that fails on them, with a `ValueError` for `nan` and an `OverflowError` for `inf`. You can catch two kinds of error at once like this:
+
+```python
+except (ValueError, OverflowError):
+```
+
+Finally, raise `InvalidExpense` if the paise come out at 0 or less.
 
 **Check it:**
 `parse_amount("19.99", 2)` → `1999`
 `parse_amount("₹1,350", 2)` → `135000`
 `parse_amount("-5", 2)` → raises `InvalidExpense`
+`parse_amount("nan", 2)` → raises `InvalidExpense`, not a crash
 
 ### Step 3: Reading who shared it (`parse_shared_by`)
 
@@ -180,7 +203,7 @@ This is the longest step. Split on `";"` and look at each part on its own:
 - `"Riya"` has no colon, so the name is `"Riya"` and the count is 1.
 - `"Arjun:2"` has a colon, so `part.split(":", 1)` gives `["Arjun", "2"]`. Then `int("2")` gives the count.
 
-The `1` in `split(":", 1)` means "split at the first colon only". It's a small safety net.
+The `1` in `split(":", 1)` means "split at the first colon only", and it matters more than it looks. Suppose someone types `Arjun:2:3`. Without the `1`, you'd get three pieces, and `name, count_text = ...` crashes with `too many values to unpack`. With the `1`, you get `["Arjun", "2:3"]`. Then `int("2:3")` fails inside your `try`, and the user gets a clear message instead.
 
 The checks are easiest as a row of `if` statements, each one raising `InvalidExpense` with its own message. Look at the list under [Catching mistakes](#catching-mistakes) for what to check.
 
@@ -204,7 +227,9 @@ with open(path, encoding="utf-8-sig", newline="") as file:
 ```
 
 - `newline=""` is something the `csv` module asks for. Without it, some line endings get mixed up.
-- `"utf-8-sig"` copes with an invisible mark that Excel adds to the start of CSV files it saves. With plain `"utf-8"`, that mark would end up stuck to the first column name.
+- `"utf-8-sig"` copes with the same invisible mark as in Step 1. Excel adds it when it saves a CSV UTF-8 file, and with plain `"utf-8"` it would end up stuck to the first column name.
+
+Before reading any rows, check the columns. `reader.fieldnames` is the list of names from the first line, or `None` if the file is completely empty. In your error message, show the columns you *found* as well as the ones you expected. A very common mistake is `payer, amount, ...` with a space after each comma, and it's easy to spot when both versions are printed together.
 
 Then loop over the reader, and catch the errors **inside** the loop:
 
@@ -335,7 +360,7 @@ That's why this program does two things:
 
 Then, when ₹100 has to be split three ways, the program decides exactly where the odd paisa goes (Step 6), instead of letting it vanish. That's what lets `main()` promise, with an `assert`, that the balances add up to exactly zero.
 
-Banks and payment apps do the same thing. They count in the smallest coin (paise, cents), never in floats.
+Real money software is careful in the same way. It either counts in the smallest coin (paise, cents), like we do, or uses special exact decimal numbers. Plain floats are kept well away from money.
 
 ---
 
@@ -350,7 +375,10 @@ Make a copy of `expenses.csv` to experiment on, and run the program with the cop
 - [ ] Add a line with only `Riya,500`, and nothing after it
 - [ ] Write an amount as `"₹2,500"`, with the quotes. It should work. Then take the quotes away: you should get the "too many commas" message
 - [ ] Add an expense of `0.01` shared by three people. The program should still balance
-- [ ] Make everyone pay exactly their share, and check that it says nobody needs to pay
+- [ ] Type `nan` as an amount. Python's `float()` accepts it, but your program shouldn't
+- [ ] Type an amount with 3 numbers after the point, like `10.005`
+- [ ] Make a file with just one expense, shared only by the person who paid it. It should say nobody needs to pay
+- [ ] On Windows: open `settlement.csv` in Excel, leave it open, and run the program again
 
 ---
 
@@ -371,7 +399,7 @@ Add a fifth column, `category`, with values like `food`, `travel` and `stay`. Th
 Part of the trip was in Thailand, and someone paid in baht.
 
 - Add a `currency` column (`INR`, `THB`, `USD`), and a fixed table of rates in paise, like `RATES = {"INR": 100, "THB": 245, "USD": 8350}`. Those rates are made up; look up real ones if you like.
-- Convert in `parse_amount()`: `round(amount * RATES[currency])`. Everything after that stays the same, because the rest of the program only ever sees paise.
+- Give `parse_amount()` a third argument, `currency`, and pass in the cleaned value from the new column. Then convert with `round(float(text) * RATES[currency])`. Everything after that stays the same, because the rest of the program only ever sees paise.
 - Raise `InvalidExpense` for a currency that isn't in the table.
 
 ### 3. Fairer leftover paise
@@ -393,5 +421,5 @@ Right now, the leftover paise always go to whoever is listed first. That means R
 | 5. Conditionals and loops | checking every row, the `while True` settle-up loop |
 | 6. Functions | one job per function, with each one handing its result to the next |
 | 7. Lambda and `key=` | `sorted(balances, key=lambda name: balances[name])` |
-| 9. Exceptions | your own `InvalidExpense`, `raise`, catching errors inside a loop, `assert` |
+| 9. Exceptions | your own `InvalidExpense`, `raise`, catching two kinds of error at once, catching errors inside a loop, `assert` |
 | 10. Files, CSV | `csv.DictReader` and `DictWriter`, `newline=""`, `utf-8-sig` |
