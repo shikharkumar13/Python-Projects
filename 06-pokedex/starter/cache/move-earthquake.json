@@ -1,0 +1,13 @@
+{
+  "id": 89,
+  "name": "earthquake",
+  "power": 100,
+  "accuracy": 100,
+  "pp": 10,
+  "type": {
+    "name": "ground"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

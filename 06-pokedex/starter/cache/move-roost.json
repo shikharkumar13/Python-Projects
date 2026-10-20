@@ -1,0 +1,13 @@
+{
+  "id": 355,
+  "name": "roost",
+  "power": null,
+  "accuracy": null,
+  "pp": 5,
+  "type": {
+    "name": "flying"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

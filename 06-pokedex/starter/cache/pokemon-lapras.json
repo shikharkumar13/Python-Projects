@@ -1,0 +1,362 @@
+{
+  "id": 131,
+  "name": "lapras",
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "water"
+      }
+    },
+    {
+      "slot": 2,
+      "type": {
+        "name": "ice"
+      }
+    }
+  ],
+  "stats": [
+    {
+      "base_stat": 130,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 85,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 80,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 85,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 95,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 60,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "moves": [
+    {
+      "move": {
+        "name": "body-slam"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 40,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "growl"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 6,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "sing"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 16,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "mist"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 20,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "water-gun"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "hydro-pump"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 65,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "surf"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 45,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "ice-beam"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 45,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "blizzard"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 58,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "confuse-ray"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 31,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "perish-song"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 60,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "safeguard"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 50,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "rain-dance"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 50,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "sheer-cold"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 65,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "water-pulse"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 30,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "brine"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 37,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "dragon-pulse"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 52,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "ice-shard"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 20,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "life-dew"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 15,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    }
+  ]
+}

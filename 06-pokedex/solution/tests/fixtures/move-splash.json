@@ -1,0 +1,13 @@
+{
+  "id": 150,
+  "name": "splash",
+  "power": null,
+  "accuracy": null,
+  "pp": 40,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

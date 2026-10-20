@@ -1,0 +1,13 @@
+{
+  "id": 427,
+  "name": "psycho-cut",
+  "power": 70,
+  "accuracy": 100,
+  "pp": 20,
+  "type": {
+    "name": "psychic"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

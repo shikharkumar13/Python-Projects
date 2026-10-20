@@ -1,0 +1,13 @@
+{
+  "id": 347,
+  "name": "calm-mind",
+  "power": null,
+  "accuracy": null,
+  "pp": 20,
+  "type": {
+    "name": "psychic"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

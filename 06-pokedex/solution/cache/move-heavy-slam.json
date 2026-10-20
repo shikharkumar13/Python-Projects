@@ -1,0 +1,13 @@
+{
+  "id": 484,
+  "name": "heavy-slam",
+  "power": null,
+  "accuracy": 100,
+  "pp": 10,
+  "type": {
+    "name": "steel"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

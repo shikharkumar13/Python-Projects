@@ -1,0 +1,68 @@
+{
+  "id": 2,
+  "name": "fighting",
+  "damage_relations": {
+    "no_damage_to": [
+      {
+        "name": "ghost"
+      }
+    ],
+    "half_damage_to": [
+      {
+        "name": "flying"
+      },
+      {
+        "name": "poison"
+      },
+      {
+        "name": "bug"
+      },
+      {
+        "name": "psychic"
+      },
+      {
+        "name": "fairy"
+      }
+    ],
+    "double_damage_to": [
+      {
+        "name": "normal"
+      },
+      {
+        "name": "rock"
+      },
+      {
+        "name": "steel"
+      },
+      {
+        "name": "ice"
+      },
+      {
+        "name": "dark"
+      }
+    ],
+    "no_damage_from": [],
+    "half_damage_from": [
+      {
+        "name": "rock"
+      },
+      {
+        "name": "bug"
+      },
+      {
+        "name": "dark"
+      }
+    ],
+    "double_damage_from": [
+      {
+        "name": "flying"
+      },
+      {
+        "name": "psychic"
+      },
+      {
+        "name": "fairy"
+      }
+    ]
+  }
+}

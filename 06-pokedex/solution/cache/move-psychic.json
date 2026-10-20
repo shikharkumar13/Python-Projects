@@ -1,0 +1,13 @@
+{
+  "id": 94,
+  "name": "psychic",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "type": {
+    "name": "psychic"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

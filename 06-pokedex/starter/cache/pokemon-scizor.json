@@ -1,0 +1,458 @@
+{
+  "id": 212,
+  "name": "scizor",
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "bug"
+      }
+    },
+    {
+      "slot": 2,
+      "type": {
+        "name": "steel"
+      }
+    }
+  ],
+  "stats": [
+    {
+      "base_stat": 70,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 130,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 100,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 55,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 80,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 65,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "moves": [
+    {
+      "move": {
+        "name": "razor-wind"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 33,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "swords-dance"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 57,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "wing-attack"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "leer"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "agility"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 24,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "quick-attack"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "double-team"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 48,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "focus-energy"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 28,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "slash"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 36,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "false-swipe"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 18,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "fury-cutter"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 46,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "ruby-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "pursuit"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 12,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "metal-claw"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 30,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "silver-wind"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 6,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "aerial-ace"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 11,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "iron-defense"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 41,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "firered-leafgreen"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "feint"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 61,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "platinum"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "close-combat"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 43,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "night-slash"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 45,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "air-slash"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 18,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "x-scissor"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 41,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "bullet-punch"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 29,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "iron-head"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 53,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "double-hit"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 49,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "laser-focus"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 44,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    }
+  ]
+}

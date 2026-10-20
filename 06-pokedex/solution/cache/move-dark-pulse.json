@@ -1,0 +1,13 @@
+{
+  "id": 399,
+  "name": "dark-pulse",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "dark"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": 329,
+  "name": "sheer-cold",
+  "power": null,
+  "accuracy": 30,
+  "pp": 5,
+  "type": {
+    "name": "ice"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

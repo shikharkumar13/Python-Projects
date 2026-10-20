@@ -1,0 +1,13 @@
+{
+  "id": 528,
+  "name": "wild-charge",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "electric"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

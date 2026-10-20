@@ -1,0 +1,436 @@
+{
+  "id": 25,
+  "name": "pikachu",
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "electric"
+      }
+    }
+  ],
+  "stats": [
+    {
+      "base_stat": 35,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 55,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 40,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 50,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 50,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 90,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "moves": [
+    {
+      "move": {
+        "name": "slam"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 37,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "double-kick"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 9,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "tail-whip"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 6,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "yellow"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "growl"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 5,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "x-y"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "thunder-shock"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "thunderbolt"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 42,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "thunder-wave"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 18,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "thunder"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 58,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "agility"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 45,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "quick-attack"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 16,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "double-team"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 23,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "light-screen"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 53,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "swift"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 26,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "sweet-kiss"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "charm"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "spark"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 26,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "iron-tail"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 37,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "feint"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 34,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "nasty-plot"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "discharge"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 42,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "electro-ball"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 18,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "wild-charge"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 50,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "play-nice"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 7,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "x-y"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "nuzzle"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 29,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "omega-ruby-alpha-sapphire"
+          }
+        }
+      ]
+    }
+  ]
+}

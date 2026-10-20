@@ -1,0 +1,13 @@
+{
+  "id": 104,
+  "name": "double-team",
+  "power": null,
+  "accuracy": null,
+  "pp": 15,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

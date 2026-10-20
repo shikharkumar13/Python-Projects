@@ -1,0 +1,13 @@
+{
+  "id": 63,
+  "name": "hyper-beam",
+  "power": 150,
+  "accuracy": 90,
+  "pp": 5,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

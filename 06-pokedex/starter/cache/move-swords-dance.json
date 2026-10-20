@@ -1,0 +1,13 @@
+{
+  "id": 14,
+  "name": "swords-dance",
+  "power": null,
+  "accuracy": null,
+  "pp": 20,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

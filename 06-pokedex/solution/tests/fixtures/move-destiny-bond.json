@@ -1,0 +1,13 @@
+{
+  "id": 194,
+  "name": "destiny-bond",
+  "power": null,
+  "accuracy": null,
+  "pp": 5,
+  "type": {
+    "name": "ghost"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

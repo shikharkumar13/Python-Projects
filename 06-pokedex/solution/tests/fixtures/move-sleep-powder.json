@@ -1,0 +1,13 @@
+{
+  "id": 79,
+  "name": "sleep-powder",
+  "power": null,
+  "accuracy": 75,
+  "pp": 15,
+  "type": {
+    "name": "grass"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

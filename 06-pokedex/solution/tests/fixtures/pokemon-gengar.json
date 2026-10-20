@@ -1,0 +1,474 @@
+{
+  "id": 94,
+  "name": "gengar",
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "ghost"
+      }
+    },
+    {
+      "slot": 2,
+      "type": {
+        "name": "poison"
+      }
+    }
+  ],
+  "stats": [
+    {
+      "base_stat": 60,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 65,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 60,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 130,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 75,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 110,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "moves": [
+    {
+      "move": {
+        "name": "disable"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "toxic"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 21,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "hypnosis"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 29,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "night-shade"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 30,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "confuse-ray"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 31,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "haze"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "lick"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "smog"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "dream-eater"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 60,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "poison-gas"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 7,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "nightmare"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 61,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "curse"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 20,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "spite"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 16,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "destiny-bond"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 54,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "perish-song"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "mean-look"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 64,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "firered-leafgreen"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "shadow-ball"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 48,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "will-o-wisp"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 14,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "astonish"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "shadow-punch"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 25,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "ruby-sapphire"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "payback"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 28,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "sucker-punch"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 36,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "dark-pulse"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 44,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "venoshock"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 18,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "hex"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 55,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "reflect-type"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": 153,
+  "name": "explosion",
+  "power": 250,
+  "accuracy": 100,
+  "pp": 5,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

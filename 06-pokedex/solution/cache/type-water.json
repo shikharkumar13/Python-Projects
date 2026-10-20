@@ -1,0 +1,52 @@
+{
+  "id": 11,
+  "name": "water",
+  "damage_relations": {
+    "no_damage_to": [],
+    "half_damage_to": [
+      {
+        "name": "water"
+      },
+      {
+        "name": "grass"
+      },
+      {
+        "name": "dragon"
+      }
+    ],
+    "double_damage_to": [
+      {
+        "name": "ground"
+      },
+      {
+        "name": "rock"
+      },
+      {
+        "name": "fire"
+      }
+    ],
+    "no_damage_from": [],
+    "half_damage_from": [
+      {
+        "name": "steel"
+      },
+      {
+        "name": "fire"
+      },
+      {
+        "name": "water"
+      },
+      {
+        "name": "ice"
+      }
+    ],
+    "double_damage_from": [
+      {
+        "name": "grass"
+      },
+      {
+        "name": "electric"
+      }
+    ]
+  }
+}

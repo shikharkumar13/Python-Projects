@@ -1,0 +1,13 @@
+{
+  "id": 223,
+  "name": "dynamic-punch",
+  "power": 100,
+  "accuracy": 50,
+  "pp": 5,
+  "type": {
+    "name": "fighting"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

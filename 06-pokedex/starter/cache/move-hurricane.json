@@ -1,0 +1,13 @@
+{
+  "id": 542,
+  "name": "hurricane",
+  "power": 110,
+  "accuracy": 70,
+  "pp": 10,
+  "type": {
+    "name": "flying"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

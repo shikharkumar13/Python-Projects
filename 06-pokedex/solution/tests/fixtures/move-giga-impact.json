@@ -1,0 +1,13 @@
+{
+  "id": 416,
+  "name": "giga-impact",
+  "power": 150,
+  "accuracy": 90,
+  "pp": 5,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

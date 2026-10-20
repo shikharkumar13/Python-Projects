@@ -1,0 +1,13 @@
+{
+  "id": 105,
+  "name": "recover",
+  "power": null,
+  "accuracy": null,
+  "pp": 5,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

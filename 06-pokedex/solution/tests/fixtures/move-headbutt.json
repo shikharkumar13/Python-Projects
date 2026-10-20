@@ -1,0 +1,13 @@
+{
+  "id": 29,
+  "name": "headbutt",
+  "power": 70,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

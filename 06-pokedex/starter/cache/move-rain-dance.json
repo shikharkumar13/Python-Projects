@@ -1,0 +1,13 @@
+{
+  "id": 240,
+  "name": "rain-dance",
+  "power": null,
+  "accuracy": null,
+  "pp": 5,
+  "type": {
+    "name": "water"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

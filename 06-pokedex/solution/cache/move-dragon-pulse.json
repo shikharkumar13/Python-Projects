@@ -1,0 +1,13 @@
+{
+  "id": 406,
+  "name": "dragon-pulse",
+  "power": 85,
+  "accuracy": 100,
+  "pp": 10,
+  "type": {
+    "name": "dragon"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

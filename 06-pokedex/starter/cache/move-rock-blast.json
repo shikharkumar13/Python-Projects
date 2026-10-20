@@ -1,0 +1,13 @@
+{
+  "id": 350,
+  "name": "rock-blast",
+  "power": 25,
+  "accuracy": 90,
+  "pp": 10,
+  "type": {
+    "name": "rock"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

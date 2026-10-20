@@ -1,0 +1,548 @@
+{
+  "id": 36,
+  "name": "clefable",
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "fairy"
+      }
+    }
+  ],
+  "stats": [
+    {
+      "base_stat": 95,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 70,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 73,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 95,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 90,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 60,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "moves": [
+    {
+      "move": {
+        "name": "pound"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "double-slap"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "tackle"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "double-edge"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 47,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "growl"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "sing"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "psychic"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 29,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "minimize"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "defense-curl"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "metronome"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "splash"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "sweet-kiss"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "charm"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "encore"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "moonlight"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "follow-me"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "meteor-mash"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "cosmic-power"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "calm-mind"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 21,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "gravity"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "healing-wish"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "copycat"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "after-you"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "stored-power"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "disarming-voice"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "x-y"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "draining-kiss"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 15,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "fairy-wind"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 5,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "moonblast"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 37,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "baby-doll-eyes"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 9,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "legends-arceus"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "spotlight"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sun-moon"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "life-dew"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    }
+  ]
+}

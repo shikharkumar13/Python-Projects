@@ -1,0 +1,426 @@
+{
+  "id": 149,
+  "name": "dragonite",
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "dragon"
+      }
+    },
+    {
+      "slot": 2,
+      "type": {
+        "name": "flying"
+      }
+    }
+  ],
+  "stats": [
+    {
+      "base_stat": 91,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 134,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 95,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 100,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 100,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 80,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "moves": [
+    {
+      "move": {
+        "name": "fire-punch"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "thunder-punch"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "diamond-pearl"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "wing-attack"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 55,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "slam"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 40,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "wrap"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "leer"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "mist"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "hyper-beam"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 80,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "dragon-rage"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 45,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "thunder-wave"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 10,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "agility"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 38,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "outrage"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 67,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "safeguard"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 53,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "twister"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 15,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "rain-dance"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 53,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "extreme-speed"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "dragon-dance"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 62,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "sword-shield"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "roost"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 88,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "aqua-tail"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 39,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "dragon-rush"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 47,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "aqua-jet"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "lets-go-pikachu-lets-go-eevee"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "dragon-tail"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 33,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "hurricane"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 81,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "black-white"
+          }
+        }
+      ]
+    }
+  ]
+}

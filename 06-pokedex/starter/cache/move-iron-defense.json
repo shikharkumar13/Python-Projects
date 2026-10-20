@@ -1,0 +1,13 @@
+{
+  "id": 334,
+  "name": "iron-defense",
+  "power": null,
+  "accuracy": null,
+  "pp": 15,
+  "type": {
+    "name": "steel"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

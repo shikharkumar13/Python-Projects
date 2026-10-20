@@ -1,0 +1,13 @@
+{
+  "id": 195,
+  "name": "perish-song",
+  "power": null,
+  "accuracy": null,
+  "pp": 5,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

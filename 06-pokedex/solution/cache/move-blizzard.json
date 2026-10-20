@@ -1,0 +1,13 @@
+{
+  "id": 59,
+  "name": "blizzard",
+  "power": 110,
+  "accuracy": 70,
+  "pp": 5,
+  "type": {
+    "name": "ice"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": 120,
+  "name": "self-destruct",
+  "power": 200,
+  "accuracy": 100,
+  "pp": 5,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

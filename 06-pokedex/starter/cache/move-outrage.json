@@ -1,0 +1,13 @@
+{
+  "id": 200,
+  "name": "outrage",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 10,
+  "type": {
+    "name": "dragon"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

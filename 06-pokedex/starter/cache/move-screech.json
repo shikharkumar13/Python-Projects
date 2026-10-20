@@ -1,0 +1,13 @@
+{
+  "id": 103,
+  "name": "screech",
+  "power": null,
+  "accuracy": 85,
+  "pp": 40,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

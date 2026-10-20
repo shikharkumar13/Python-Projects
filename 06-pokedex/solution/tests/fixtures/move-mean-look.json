@@ -1,0 +1,13 @@
+{
+  "id": 212,
+  "name": "mean-look",
+  "power": null,
+  "accuracy": null,
+  "pp": 5,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

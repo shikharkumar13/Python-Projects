@@ -1,0 +1,18 @@
+# The Pokémon that `python -m pokedex best` picks a team from.
+# One name on each line. Lines starting with # are ignored.
+# All 15 of these are already saved in cache/, so they work offline.
+pikachu
+charizard
+blastoise
+venusaur
+gengar
+snorlax
+dragonite
+gyarados
+alakazam
+machamp
+lapras
+golem
+scizor
+clefable
+umbreon

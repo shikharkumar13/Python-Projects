@@ -1,0 +1,13 @@
+{
+  "id": 235,
+  "name": "synthesis",
+  "power": null,
+  "accuracy": null,
+  "pp": 5,
+  "type": {
+    "name": "grass"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

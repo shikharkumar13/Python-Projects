@@ -1,0 +1,13 @@
+{
+  "id": 403,
+  "name": "air-slash",
+  "power": 75,
+  "accuracy": 95,
+  "pp": 15,
+  "type": {
+    "name": "flying"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

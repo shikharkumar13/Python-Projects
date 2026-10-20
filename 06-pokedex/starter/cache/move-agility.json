@@ -1,0 +1,13 @@
+{
+  "id": 97,
+  "name": "agility",
+  "power": null,
+  "accuracy": null,
+  "pp": 30,
+  "type": {
+    "name": "psychic"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

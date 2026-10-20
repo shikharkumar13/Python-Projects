@@ -1,0 +1,13 @@
+{
+  "id": 477,
+  "name": "telekinesis",
+  "power": null,
+  "accuracy": null,
+  "pp": 15,
+  "type": {
+    "name": "psychic"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

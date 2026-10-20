@@ -1,0 +1,13 @@
+{
+  "id": 175,
+  "name": "flail",
+  "power": null,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

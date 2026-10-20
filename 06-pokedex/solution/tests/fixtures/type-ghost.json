@@ -1,0 +1,48 @@
+{
+  "id": 8,
+  "name": "ghost",
+  "damage_relations": {
+    "no_damage_to": [
+      {
+        "name": "normal"
+      }
+    ],
+    "half_damage_to": [
+      {
+        "name": "dark"
+      }
+    ],
+    "double_damage_to": [
+      {
+        "name": "ghost"
+      },
+      {
+        "name": "psychic"
+      }
+    ],
+    "no_damage_from": [
+      {
+        "name": "normal"
+      },
+      {
+        "name": "fighting"
+      }
+    ],
+    "half_damage_from": [
+      {
+        "name": "poison"
+      },
+      {
+        "name": "bug"
+      }
+    ],
+    "double_damage_from": [
+      {
+        "name": "ghost"
+      },
+      {
+        "name": "dark"
+      }
+    ]
+  }
+}

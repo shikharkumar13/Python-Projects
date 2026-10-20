@@ -1,0 +1,13 @@
+{
+  "id": 407,
+  "name": "dragon-rush",
+  "power": 100,
+  "accuracy": 75,
+  "pp": 10,
+  "type": {
+    "name": "dragon"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

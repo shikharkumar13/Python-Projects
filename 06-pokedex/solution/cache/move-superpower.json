@@ -1,0 +1,13 @@
+{
+  "id": 276,
+  "name": "superpower",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 5,
+  "type": {
+    "name": "fighting"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

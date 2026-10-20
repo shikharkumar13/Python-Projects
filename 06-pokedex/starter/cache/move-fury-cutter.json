@@ -1,0 +1,13 @@
+{
+  "id": 210,
+  "name": "fury-cutter",
+  "power": 40,
+  "accuracy": 95,
+  "pp": 20,
+  "type": {
+    "name": "bug"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

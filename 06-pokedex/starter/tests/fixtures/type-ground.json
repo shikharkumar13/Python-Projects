@@ -1,0 +1,60 @@
+{
+  "id": 5,
+  "name": "ground",
+  "damage_relations": {
+    "no_damage_to": [
+      {
+        "name": "flying"
+      }
+    ],
+    "half_damage_to": [
+      {
+        "name": "bug"
+      },
+      {
+        "name": "grass"
+      }
+    ],
+    "double_damage_to": [
+      {
+        "name": "poison"
+      },
+      {
+        "name": "rock"
+      },
+      {
+        "name": "steel"
+      },
+      {
+        "name": "fire"
+      },
+      {
+        "name": "electric"
+      }
+    ],
+    "no_damage_from": [
+      {
+        "name": "electric"
+      }
+    ],
+    "half_damage_from": [
+      {
+        "name": "poison"
+      },
+      {
+        "name": "rock"
+      }
+    ],
+    "double_damage_from": [
+      {
+        "name": "water"
+      },
+      {
+        "name": "grass"
+      },
+      {
+        "name": "ice"
+      }
+    ]
+  }
+}

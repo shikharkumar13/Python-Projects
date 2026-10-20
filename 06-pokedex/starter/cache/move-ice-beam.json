@@ -1,0 +1,13 @@
+{
+  "id": 58,
+  "name": "ice-beam",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "type": {
+    "name": "ice"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": 185,
+  "name": "feint-attack",
+  "power": 60,
+  "accuracy": null,
+  "pp": 20,
+  "type": {
+    "name": "dark"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

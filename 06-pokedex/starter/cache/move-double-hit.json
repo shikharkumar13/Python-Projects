@@ -1,0 +1,13 @@
+{
+  "id": 458,
+  "name": "double-hit",
+  "power": 35,
+  "accuracy": 90,
+  "pp": 10,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

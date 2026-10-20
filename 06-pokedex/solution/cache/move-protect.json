@@ -1,0 +1,13 @@
+{
+  "id": 182,
+  "name": "protect",
+  "power": null,
+  "accuracy": null,
+  "pp": 10,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

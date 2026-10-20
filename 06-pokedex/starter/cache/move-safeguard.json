@@ -1,0 +1,13 @@
+{
+  "id": 219,
+  "name": "safeguard",
+  "power": null,
+  "accuracy": null,
+  "pp": 25,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

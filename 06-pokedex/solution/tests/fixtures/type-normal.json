@@ -1,0 +1,31 @@
+{
+  "id": 1,
+  "name": "normal",
+  "damage_relations": {
+    "no_damage_to": [
+      {
+        "name": "ghost"
+      }
+    ],
+    "half_damage_to": [
+      {
+        "name": "rock"
+      },
+      {
+        "name": "steel"
+      }
+    ],
+    "double_damage_to": [],
+    "no_damage_from": [
+      {
+        "name": "ghost"
+      }
+    ],
+    "half_damage_from": [],
+    "double_damage_from": [
+      {
+        "name": "fighting"
+      }
+    ]
+  }
+}

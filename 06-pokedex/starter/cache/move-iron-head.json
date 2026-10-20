@@ -1,0 +1,13 @@
+{
+  "id": 442,
+  "name": "iron-head",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "steel"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

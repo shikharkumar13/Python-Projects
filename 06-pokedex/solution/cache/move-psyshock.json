@@ -1,0 +1,13 @@
+{
+  "id": 473,
+  "name": "psyshock",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 10,
+  "type": {
+    "name": "psychic"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

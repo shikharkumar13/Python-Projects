@@ -1,0 +1,13 @@
+{
+  "id": 585,
+  "name": "moonblast",
+  "power": 95,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "fairy"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": 236,
+  "name": "moonlight",
+  "power": null,
+  "accuracy": null,
+  "pp": 5,
+  "type": {
+    "name": "fairy"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

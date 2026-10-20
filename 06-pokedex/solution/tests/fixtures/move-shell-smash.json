@@ -1,0 +1,13 @@
+{
+  "id": 504,
+  "name": "shell-smash",
+  "power": null,
+  "accuracy": null,
+  "pp": 15,
+  "type": {
+    "name": "normal"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

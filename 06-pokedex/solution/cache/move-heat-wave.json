@@ -1,0 +1,13 @@
+{
+  "id": 257,
+  "name": "heat-wave",
+  "power": 95,
+  "accuracy": 90,
+  "pp": 10,
+  "type": {
+    "name": "fire"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

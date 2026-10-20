@@ -1,0 +1,100 @@
+{
+  "id": 129,
+  "name": "magikarp",
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "water"
+      }
+    }
+  ],
+  "stats": [
+    {
+      "base_stat": 20,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 10,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 55,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 15,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 20,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 80,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "moves": [
+    {
+      "move": {
+        "name": "tackle"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 15,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "splash"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 1,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "red-blue"
+          }
+        }
+      ]
+    },
+    {
+      "move": {
+        "name": "flail"
+      },
+      "version_group_details": [
+        {
+          "level_learned_at": 30,
+          "move_learn_method": {
+            "name": "level-up"
+          },
+          "version_group": {
+            "name": "gold-silver"
+          }
+        }
+      ]
+    }
+  ]
+}

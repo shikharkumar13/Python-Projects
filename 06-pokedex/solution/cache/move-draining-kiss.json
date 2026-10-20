@@ -1,0 +1,13 @@
+{
+  "id": 577,
+  "name": "draining-kiss",
+  "power": 50,
+  "accuracy": 100,
+  "pp": 10,
+  "type": {
+    "name": "fairy"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

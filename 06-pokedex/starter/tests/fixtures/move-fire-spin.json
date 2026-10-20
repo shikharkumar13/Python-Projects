@@ -1,0 +1,13 @@
+{
+  "id": 83,
+  "name": "fire-spin",
+  "power": 35,
+  "accuracy": 85,
+  "pp": 15,
+  "type": {
+    "name": "fire"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}

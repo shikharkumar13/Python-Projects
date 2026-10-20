@@ -1,0 +1,13 @@
+{
+  "id": 272,
+  "name": "role-play",
+  "power": null,
+  "accuracy": null,
+  "pp": 10,
+  "type": {
+    "name": "psychic"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": 394,
+  "name": "flare-blitz",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "fire"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

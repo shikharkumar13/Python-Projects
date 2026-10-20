@@ -1,0 +1,13 @@
+{
+  "id": 242,
+  "name": "crunch",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "dark"
+  },
+  "damage_class": {
+    "name": "physical"
+  }
+}

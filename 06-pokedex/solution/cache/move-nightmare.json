@@ -1,0 +1,13 @@
+{
+  "id": 171,
+  "name": "nightmare",
+  "power": null,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "ghost"
+  },
+  "damage_class": {
+    "name": "status"
+  }
+}

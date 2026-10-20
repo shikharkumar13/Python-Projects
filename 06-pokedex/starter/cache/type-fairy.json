@@ -1,0 +1,53 @@
+{
+  "id": 18,
+  "name": "fairy",
+  "damage_relations": {
+    "no_damage_to": [],
+    "half_damage_to": [
+      {
+        "name": "poison"
+      },
+      {
+        "name": "steel"
+      },
+      {
+        "name": "fire"
+      }
+    ],
+    "double_damage_to": [
+      {
+        "name": "fighting"
+      },
+      {
+        "name": "dragon"
+      },
+      {
+        "name": "dark"
+      }
+    ],
+    "no_damage_from": [
+      {
+        "name": "dragon"
+      }
+    ],
+    "half_damage_from": [
+      {
+        "name": "fighting"
+      },
+      {
+        "name": "bug"
+      },
+      {
+        "name": "dark"
+      }
+    ],
+    "double_damage_from": [
+      {
+        "name": "poison"
+      },
+      {
+        "name": "steel"
+      }
+    ]
+  }
+}

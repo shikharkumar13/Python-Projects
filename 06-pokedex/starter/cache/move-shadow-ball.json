@@ -1,0 +1,13 @@
+{
+  "id": 247,
+  "name": "shadow-ball",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 15,
+  "type": {
+    "name": "ghost"
+  },
+  "damage_class": {
+    "name": "special"
+  }
+}
