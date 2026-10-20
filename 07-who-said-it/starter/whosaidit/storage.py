@@ -85,6 +85,7 @@ def load(path: Path) -> QuoteBook:
     #   damaged. Log it with logger.exception(...), and raise StorageError
     #   saying so. Add `from error` to keep the original error attached.
     # - except OSError: raise StorageError with error.strerror.
+    # - After the try: if there are no quotes at all, raise StorageError too.
     # - Return QuoteBook(quotes, {author.slug: author for author in authors}, scraped_at).
     # save(), above, writes the file this reads.
     raise StorageError("Loading quotes.json is TODO 8.")   # placeholder: replace this line

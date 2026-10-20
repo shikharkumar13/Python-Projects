@@ -80,7 +80,7 @@ Requests to the site: 0. Pages from html_cache/: 60.
 Now play with: python -m whosaidit play
 ```
 
-To see the real thing, delete `html_cache/` and run `scrape` again. It now makes 61 requests, one second apart, so it takes about a minute. Run it once more, and it's back to zero. If it's stopped halfway (no internet, or Ctrl+C), the pages it already has are kept, so running it again carries on where it stopped.
+To see the real thing, delete `html_cache/` and run `scrape` again. It now makes 61 requests, one second apart, so it takes a minute or two. Run it once more, and it's back to zero. If it's stopped halfway (no internet, or Ctrl+C), the pages it already has are kept, so running it again carries on where it stopped.
 
 **The log.** Every real request, and every item that's skipped (with the reason), is written to `whosaidit.log`, next to `html_cache/`.
 
@@ -132,6 +132,7 @@ Each author's page has their name in `h3.author-title`, their birth date in `spa
 - **A `User-Agent`** that says who's asking: `whosaidit/1.0 (a Python course practice project)`.
 - **A pause between requests.** `time.sleep(1.0)` before every request except the first. If `robots.txt` asks for a longer `Crawl-delay`, the scraper uses that instead.
 - **A timeout** on every request, so a server that never answers can't make the program wait forever.
+- **It stays on the site.** A site's `robots.txt` only speaks for that site, so a link to anywhere else is never followed.
 - **A cache.** Every page is saved in `html_cache/` the first time. After that, the site is never asked for it again.
 
 ### From HTML to data
@@ -277,6 +278,7 @@ If the program crashes halfway through writing, only the `.tmp` file is half-wri
 - no file yet: run `scrape` first
 - bad JSON, a missing key, or a quote that breaks the rules: the file is damaged, so scrape again
 - any other `OSError`: say what went wrong
+- a file with no quotes in it at all: there's nothing to play, so scrape again
 
 **Check it:** `python -m pytest tests/test_storage.py`
 
@@ -305,10 +307,13 @@ One trap: a `RobotFileParser` that has never been given a `robots.txt` says **no
 
 ```
 get(url)
-  ├── in html_cache/?  yes → return it. No request, so no robots.txt check, and no pause
+  ├── on another site?  yes → raise NotAllowed
+  ├── in html_cache/?   yes → return it. No request, so no robots.txt check, and no pause
   └── no → allowed?  no → raise NotAllowed
             └── yes → download() it → save it in html_cache/ → return it
 ```
+
+The first check matters because `RobotFileParser` only looks at the *path* of a URL. Ask it about `https://elsewhere.example/author/X`, and it answers using quotes.toscrape.com's rules. `_read_cache()` and `_save()` are written for you. A cache file that can't be read is fetched again, and a page that can't be saved is still used, just not cached.
 
 **Check it:** `python -m pytest tests/test_scrape.py -k "not quote_pages and not scrape_all"`
 
@@ -327,7 +332,7 @@ In a generator, a bare `return` just means "no more values".
 
 #### Step 13: `scrape_all`
 
-Go through every page, turn each dictionary from `parse_quotes()` into a `Quote`, and skip (and log) any that `Quote` refuses. Keep a note of each author's page in a dictionary. `setdefault()` stores the first URL for each slug and ignores the rest, so each author's page is fetched once, however many quotes they have. Then fetch the author pages, and turn each into an `Author`.
+Go through every page, turn each dictionary from `parse_quotes()` into a `Quote`, and skip (and log) any that `Quote` refuses. Keep a note of each author's page in a dictionary. `setdefault()` stores the first URL for each slug and ignores the rest, so each author's page is fetched once, however many quotes they have. Then fetch the author pages, and turn each into an `Author`. If an author's page is missing (`HTTPError`), or `robots.txt` asks us not to fetch it (`NotAllowed`), skip that author, and log why. Their quotes are still fine, and the game just gives vaguer hints.
 
 **Check it:** `python -m pytest tests/test_scrape.py`, then `python -m whosaidit scrape`. It should say `Saved 100 quotes by 50 authors`, with 0 requests. Then `python -m whosaidit stats`, which has its first table now. The other two wait for Step 18, so until then the decades say `(No birth dates to count.)`.
 
@@ -404,6 +409,8 @@ Each of these should give a clear message, not a traceback:
 - [ ] Make a backup copy of `html_cache/index.html`. Then, in `index.html`, delete one quote's `<small class="author">...</small>`. Run `scrape`, and look in `whosaidit.log`. (Put the backup back afterwards.)
 - [ ] Change an author's birth date in their page in `html_cache/` to `14 March 1879`. They should lose that hint, not crash
 - [ ] Turn off your Wi-Fi, delete one file from `html_cache/`, and run `scrape`. Then turn the Wi-Fi back on, and run it again
+- [ ] Move `html_cache/` somewhere safe, run `scrape`, and press Ctrl+C after a few pages. Run it again: it starts where it stopped. (Then put your copy back.)
+- [ ] Replace one file in `html_cache/` with a folder of the same name. `scrape` should fetch that page again, not crash
 - [ ] In the game: press Enter without typing, type `quit` halfway through a round, and press Ctrl+C
 - [ ] Guess `rowling`, `j k rowling`, `king` for Martin Luther King Jr., and `andre gide` without the accent
 - [ ] `python -m whosaidit play seven`, `python -m whosaidit scrape now` and `python -m whosaidit dance`

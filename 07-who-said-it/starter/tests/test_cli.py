@@ -53,7 +53,7 @@ def test_play(tmp_path, capsys):
     out = capsys.readouterr().out
     assert "Who said it? 3 quotes." in out
     assert "Not quite. Hint: They were born on" in out
-    assert "Final score: 0 out of 4." in out
+    assert "Final score: 0 out of 0." in out          # quit during the first round
 
 
 def test_play_before_scraping(tmp_path, capsys):
@@ -78,6 +78,32 @@ def test_a_site_with_no_quotes(tmp_path, capsys):
 def test_robots_txt_says_no(tmp_path, capsys):
     assert run(tmp_path, "scrape", site=FakeSite(PAGES, robots="User-agent: *\nDisallow: /\n")) == 1
     assert "robots.txt asks programs not to fetch" in capsys.readouterr().out
+
+
+def test_robots_txt_blocks_only_the_author_pages(tmp_path, capsys):
+    assert run(tmp_path, "scrape", site=FakeSite(PAGES, robots="User-agent: *\nDisallow: /author/\n")) == 0
+    out = capsys.readouterr().out
+    assert "Saved 3 quotes by 0 authors" in out
+    assert "2 authors' pages couldn't be read" in out
+
+
+def test_ctrl_c_while_scraping(tmp_path, capsys):
+    class Interrupted(FakeSite):
+        def get(self, url, timeout=None):
+            if url.endswith("/page/2/"):
+                raise KeyboardInterrupt
+            return super().get(url, timeout)
+    assert run(tmp_path, "scrape", site=Interrupted(PAGES, robots="")) == 1
+    assert "carries on from there next time" in capsys.readouterr().out
+    assert (tmp_path / "cache" / "index.html").exists()     # page 1 is kept
+    assert not (tmp_path / "quotes.json").exists()
+
+
+def test_play_with_an_empty_file(tmp_path, capsys):
+    (tmp_path / "quotes.json").write_text('{"quotes": [], "authors": [], "scraped_at": "2026-10-20T09:30:00+00:00"}',
+                                          encoding="utf-8")
+    assert run(tmp_path, "play") == 1
+    assert "has no quotes in it" in capsys.readouterr().out
 
 
 @pytest.mark.parametrize(

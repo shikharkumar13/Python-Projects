@@ -138,8 +138,11 @@ def play(book: QuoteBook, rng: random.Random, ask: Ask = input, say: Say = print
     total = rounds = 0
     try:
         for quote in order:
+            points = play_round(quote, book.author_of(quote), ask, say)
+            # Counted only once the round is over, so quitting halfway
+            # through a round doesn't count it against you.
             rounds += 1
-            total += play_round(quote, book.author_of(quote), ask, say)
+            total += points
             say(f"Score: {total} out of {rounds * GUESSES}.")
             if ask("Another one? (Enter for yes, n for no) ").strip().lower() in {"n", "no"} | QUIT_WORDS:
                 break

@@ -183,7 +183,8 @@ def test_play_until_the_player_says_no():
 def test_quit_in_the_middle_of_a_round():
     said = []
     assert play(book_of(5), random.Random(1), typing("einstein", "", "quit"), said.append) == 4
-    assert said[-1] == "Final score: 4 out of 8. Thanks for playing!"
+    # The round that was quit halfway through doesn't count against you.
+    assert said[-1] == "Final score: 4 out of 4. Thanks for playing!"
 
 
 def test_ctrl_d_ends_the_game_politely():

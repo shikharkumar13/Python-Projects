@@ -89,4 +89,6 @@ def load(path: Path) -> QuoteBook:
         raise StorageError(f"{path.name} is damaged. Make it again with: python -m whosaidit scrape") from error
     except OSError as error:
         raise StorageError(f"Couldn't read {path.name}: {error.strerror}.") from error
+    if not quotes:
+        raise StorageError(f"{path.name} has no quotes in it. Make it again with: python -m whosaidit scrape")
     return QuoteBook(quotes, {author.slug: author for author in authors}, scraped_at)

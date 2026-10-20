@@ -77,6 +77,13 @@ def test_load_a_damaged_file(tmp_path, content):
         load(path)
 
 
+def test_load_a_file_with_no_quotes(tmp_path):
+    path = tmp_path / "quotes.json"
+    path.write_text('{"quotes": [], "authors": [], "scraped_at": "2026-10-20T09:30:00+00:00"}', encoding="utf-8")
+    with pytest.raises(StorageError, match="no quotes"):
+        load(path)
+
+
 def test_save_into_a_missing_folder(tmp_path):
     with pytest.raises(StorageError, match="Couldn't save"):
         save(tmp_path / "no-such-folder" / "quotes.json", make_book())

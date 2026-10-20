@@ -132,4 +132,9 @@ def main(
         logger.exception("Request failed")
         print(f"Something went wrong talking to the site: {error}")
         return 1
+    except KeyboardInterrupt:
+        # Ctrl+C. (The game catches its own, so this is mostly scrape.)
+        print()
+        print("Stopped. Every page fetched so far is kept in html_cache/, so scrape carries on from there next time.")
+        return 1
     return 0

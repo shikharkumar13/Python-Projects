@@ -35,12 +35,15 @@ logger = logging.getLogger(__name__)
 def cache_name(url: str) -> str:
     """The file name a page is saved under: ".../page/2/" gives "page-2.html".
 
-    The front page ("/") gives "index.html". Anything that isn't a letter,
-    a digit or a dot becomes "-". A name with no dot in it gets ".html".
+    The front page ("/") gives "index.html". A query like "?page=2" is part
+    of the name too, so different pages never share a file. Anything that
+    isn't a letter, a digit or a dot becomes "-", and names that don't
+    already end in ".html" or ".txt" get ".html" on the end.
     """
-    path = urlparse(url).path.strip("/")
+    parts = urlparse(url)
+    path = parts.path.strip("/") + (f"--{parts.query}" if parts.query else "")    # "--" so it can't look like a path
     name = "".join(char if char.isalnum() or char == "." else "-" for char in path) or "index"
-    return name if "." in name else name + ".html"
+    return name if name.endswith((".html", ".txt")) else name + ".html"
 
 
 def author_slug(url: str) -> str:
@@ -116,6 +119,9 @@ class Scraper:
     def get(self, url: str) -> str:
         """A page's HTML: from the cache if it's there, otherwise downloaded (if robots.txt allows it) and saved."""
         # TODO 11
+        # - First, robots.txt only speaks for its own site. If urlparse(url).netloc
+        #   isn't urlparse(BASE_URL).netloc, raise NotAllowed: we never fetch from
+        #   anywhere else.
         # - cached = self._read_cache(url). If it isn't None, return it. (No request,
         #   so no need to check robots.txt, or to pause.)
         # - If not self.allowed(url), raise NotAllowed with a message naming the URL.
@@ -123,16 +129,26 @@ class Scraper:
         raise WhoSaidItError("Getting a page is TODO 11.")   # placeholder: replace this line
 
     def _read_cache(self, url: str) -> str | None:
+        """The saved page, or None if it isn't saved, or can't be read (then it's downloaded again)."""
         path = self.cache_dir / cache_name(url)
         if not path.exists():
             return None
+        try:
+            html = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError) as error:
+            logger.warning("Can't use %s (%s), so fetching it again", path.name, error)
+            return None
         self.from_cache += 1
-        return path.read_text(encoding="utf-8")
+        return html
 
     def _save(self, url: str, html: str) -> None:
-        self.cache_dir.mkdir(parents=True, exist_ok=True)
-        with atomic_write(self.cache_dir / cache_name(url)) as file:
-            file.write(html)
+        """Save a page in the cache. If that fails, it's logged: the page just isn't cached."""
+        try:
+            self.cache_dir.mkdir(parents=True, exist_ok=True)
+            with atomic_write(self.cache_dir / cache_name(url)) as file:
+                file.write(html)
+        except OSError as error:
+            logger.warning("Couldn't save %s in %s: %s", cache_name(url), self.cache_dir.name, error)
 
     def quote_pages(self, start: str = BASE_URL) -> Iterator[tuple[str, str]]:
         """Every page of quotes as (url, html), following "Next →" until there isn't one.
@@ -165,7 +181,9 @@ def scrape_all(scraper: Scraper) -> tuple[list[Quote], dict[str, Author]]:
     #   - Append it, and author_urls.setdefault(slug, data["author_url"]).
     #     (setdefault only stores it the first time, so each page is fetched once.)
     # - Then authors = {}. For each slug and url in author_urls.items():
-    #   - html = scraper.get(url), in a try. On requests.HTTPError, log and continue.
+    #   - html = scraper.get(url), in a try. On requests.HTTPError (a missing page)
+    #     or NotAllowed (robots.txt says no), log it and continue: the quotes are
+    #     still fine without this author's hints.
     #   - found = parse_author(html, url). If it's None, continue.
     #   - authors[slug] = Author(slug, found["name"], found["born"], found["birthplace"]),
     #     in a try. On ValidationError, log and continue.

@@ -30,6 +30,10 @@ def two_page_site(robots=""):
         (SITE + "/page/2/", "page-2.html"),
         (SITE + "/author/Albert-Einstein", "author-Albert-Einstein.html"),
         (SITE + "/robots.txt", "robots.txt"),
+        (SITE + "/author/J.K.-Rowling", "author-J.K.-Rowling.html"),     # a dot in the name
+        (SITE + "/tag/love/?page=2", "tag-love--page-2.html"),           # the query is part of the name...
+        (SITE + "/tag/love/page/2/", "tag-love-page-2.html"),            # ...so it can't clash with this
+        (SITE + "/..", "...html"),                                       # never the folder above
     ],
 )
 def test_cache_name(url, name):
@@ -102,6 +106,29 @@ def test_the_second_time_costs_no_requests(tmp_path, sleeps):
     assert later.get(SITE + "/") == first
     assert later.session.requests == []
     assert (later.requests_made, later.from_cache) == (0, 1)
+
+
+def test_pages_on_other_sites_are_refused(tmp_path):
+    site = FakeSite()
+    with pytest.raises(NotAllowed, match="isn't on quotes.toscrape.com"):
+        Scraper(tmp_path, site).get("https://elsewhere.example/author/X")
+    assert site.requests == []          # robots.txt only speaks for its own site
+
+
+def test_a_cache_file_that_cannot_be_read_is_fetched_again(tmp_path, caplog):
+    (tmp_path / "index.html").mkdir()                                  # a folder where the file should be
+    (tmp_path / "page-2.html").write_bytes("caf\xe9".encode("cp1252"))  # not UTF-8
+    scraper = Scraper(tmp_path, two_page_site())
+    assert "Imagination" in scraper.get(SITE + "/")
+    assert "charm" in scraper.get(SITE + "/page/2/")
+    assert "so fetching it again" in caplog.text
+
+
+def test_a_cache_that_cannot_be_saved_still_works(tmp_path, caplog):
+    blocked = tmp_path / "html_cache"
+    blocked.write_text("a file, where the cache folder should be", encoding="utf-8")
+    assert "Imagination" in Scraper(blocked, two_page_site()).get(SITE + "/")
+    assert "Couldn't save index.html" in caplog.text
 
 
 def test_with_closes_the_session(tmp_path):
@@ -216,6 +243,15 @@ def test_scrape_all_skips_what_it_cannot_use(tmp_path, caplog):
     assert "has no text" in caplog.text
     assert list(authors) == ["Albert-Einstein"]                     # Jane Austen's page is a 404
     assert "Skipped the author Jane-Austen: 404" in caplog.text
+
+
+def test_scrape_all_skips_authors_on_other_sites(tmp_path, caplog):
+    page = quote_page([EINSTEIN]).replace('href="/author/Albert-Einstein"', 'href="https://elsewhere.example/author/X"')
+    site = FakeSite({SITE + "/": page}, robots="")
+    quotes, authors = scrape_all(Scraper(tmp_path, site))
+    assert len(quotes) == 1 and authors == {}
+    assert not any("elsewhere" in url for url in site.requests)
+    assert "Skipped the author X" in caplog.text
 
 
 def test_scrape_all_on_the_real_last_page(tmp_path):
