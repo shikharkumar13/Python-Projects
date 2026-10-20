@@ -1,4 +1,43 @@
+# Authoring notes, kept out of the published repo
 docs/
 CLAUDE.md
 projects.md
 README_other.md
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs, and half-written files from the atomic saves (projects 4, 6 and 7)
+*.log
+*.tmp
+
+# Files the projects write while you use them
+01-trivia-night/highscores.json
+02-trip-splitter/settlement.csv
+03-dungeon-escape/savegame.json
+04-streaks/*/habits.json
+05-chat-wrapped/*/*_wrapped_*.md
+05-chat-wrapped/*/big_chat.txt
+07-who-said-it/*/quotes.json
+
+# Project 5: never commit a real chat export, or a report made from one
+05-chat-wrapped/**/WhatsApp Chat with *
+05-chat-wrapped/**/_chat.txt
+05-chat-wrapped/**/*.zip
+
+# Projects 6 and 7: new pages and API answers downloaded into the caches.
+# The saved ones that ship with the repo are already tracked, so they stay.
+# (To add a new one on purpose: git add -f <file>)
+06-pokedex/*/cache/*
+07-who-said-it/*/html_cache/*
