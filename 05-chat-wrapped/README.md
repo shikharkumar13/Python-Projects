@@ -76,6 +76,8 @@ python -m wrapped sample_chat.txt 2024     # a report for a year you choose
 
 The report is printed, and also saved next to the chat as `sample_chat_wrapped_2025.md`. A `.md` file is Markdown: open it in VS Code and press the preview button (or `Ctrl+Shift+V`, `Cmd+Shift+V` on a Mac) to see it nicely formatted.
 
+**The ▶ button in VS Code won't work for this project.** It runs one file on its own, as if you'd typed `python wrapped/__main__.py`, and then the files in the package can't find each other. Use the terminal.
+
 **Trying your own chat.** In WhatsApp, open the group, tap the three dots (Android) or the group name (iPhone), then choose **Export chat → Without media**. Save the `.txt` file into `starter/`, and run `python -m wrapped "WhatsApp Chat with Goa Gang.txt"`. Use quotes, because the name has spaces in it.
 
 Two things to know about real exports:
