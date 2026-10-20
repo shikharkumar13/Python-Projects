@@ -89,6 +89,7 @@ def test_main_with_a_year(tmp_path):
     [
         (CHAT, ["2019"], 1, "no messages from 2019"),
         (CHAT, ["twenty"], 2, "should be a number"),
+        (CHAT, ["²"], 2, "should be a number"),          # "²".isdigit() is True, but int("²") fails
         ("just some notes\nnot a chat\n", [], 1, "couldn't find any messages"),
         ("32/01/2025, 10:00 - Riya: hi\n", [], 1, "impossible date"),
         ("12/03/25, 9:45\u202fpm - Riya: hi\n", [], 1, "24-hour clock"),     # a 12-hour export

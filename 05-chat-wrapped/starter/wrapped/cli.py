@@ -50,7 +50,8 @@ def main(argv: list[str]) -> int:
     year = None
     chose_year = False          # did we pick the year ourselves?
     if len(argv) > 1:
-        if not argv[1].isdigit():
+        # isdecimal(), not isdigit(): "²".isdigit() is True, but int("²") fails.
+        if not argv[1].isdecimal():
             print(f"The year should be a number, like 2025, not {argv[1]!r}.")
             return 2
         year = int(argv[1])
